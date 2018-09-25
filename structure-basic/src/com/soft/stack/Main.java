@@ -13,5 +13,11 @@ public class Main {
 
         stack.pop();
         System.out.println(stack);
+
+
+        Solution solution = new Solution();
+        String s = "({[]})";
+        boolean isValid = solution.isValid(s);
+        System.out.println(s+" is a valid string ? "+isValid);
     }
 }
