@@ -1,6 +1,5 @@
 package com.soft.queue;
 
-import com.sun.scenario.effect.impl.prism.PrImage;
 
 public class LoopQueue<E> implements Queue<E> {
 

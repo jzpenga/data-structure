@@ -1,6 +1,5 @@
 package com.soft.array;
 
-import com.soft.array.Array;
 
 public class Main {
 
