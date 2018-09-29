@@ -23,4 +23,26 @@ public class LinkedList<E> {
             return e.toString();
         }
     }
+
+    private Node dummyHeader;
+    private int size;
+
+    public LinkedList(){
+        dummyHeader = null;
+        size=0;
+    }
+
+    public void add(E e){
+
+    }
+
+    public boolean isEmpty(){
+        return size==0;
+    }
+
+    public int getSize(){
+        return size;
+    }
+
+
 }
