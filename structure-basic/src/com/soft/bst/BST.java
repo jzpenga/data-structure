@@ -1,6 +1,6 @@
 package com.soft.bst;
 
-import java.util.Comparator;
+import java.util.LinkedList;
 
 /**
  * 二分搜索树
@@ -60,20 +60,78 @@ public class BST<E extends Comparable<E>>{
 
     }
 
-
-    // 二分搜索树的中序遍历
-    public void inOrder(){
-        inOrder(root);
+    /**
+     * 前序遍历 递归版本
+     * 根->左->右
+     */
+    public void preOrderTraverse(Node node){
+        if (node!=null){
+            System.out.println(node.e);
+            preOrderTraverse(node.left);
+            preOrderTraverse(node.right);
+        }
     }
 
-    // 中序遍历以node为根的二分搜索树, 递归算法
-    private void inOrder(Node node){
-        if(node == null)
-            return;
+    public void preOrderTraverse(){
+        LinkedList<Node> stack = new LinkedList<>();
+        stack.push(root);
+        while (!stack.isEmpty()){
+            Node node = stack.pop();
+            if (node!=null){
+                System.out.println(node.e);
 
-        inOrder(node.left);
-        System.out.println(node.e);
-        inOrder(node.right);
+                if (node.right!=null){
+                    stack.push(node.right);
+                }
+                if (node.left!=null){
+                    stack.push(node.left);
+                }
+            }
+        }
+    }
+
+
+
+    /**
+     * 中序遍历 递归版本
+     * 左->根->右
+     */
+    public void inOrderTraverse(Node node){
+        if (node!=null){
+            inOrderTraverse(node.left);
+            System.out.println(node.e);
+            inOrderTraverse(node.right);
+        }
+    }
+
+    /**
+     * 后序遍历 递归版本
+     * 左->右->根
+     */
+    public void postOrderTraversal(Node node){
+        if (node!=null){
+            postOrderTraversal(node.left);
+            postOrderTraversal(node.right);
+            System.out.println(node.e);
+        }
+    }
+
+
+    public void levelOrderTraversal(Node root){
+        LinkedList<Node> queue = new LinkedList<>();
+        queue.offer(root);
+        while (!queue.isEmpty()){
+            Node  node = queue.poll();
+            if (node!=null){
+                System.out.println(node.e);
+                if (node.right!=null){
+                    queue.offer(node.right);
+                }
+                if (node.left!=null){
+                    queue.offer(node.left);
+                }
+            }
+        }
     }
 
 
@@ -217,11 +275,11 @@ public class BST<E extends Comparable<E>>{
     private void generateBSTString(Node node, int depth, StringBuilder res){
 
         if(node == null){
-            res.append(generateDepthString(depth) + "null\n");
+            res.append(generateDepthString(depth)).append("null\n");
             return;
         }
 
-        res.append(generateDepthString(depth) + node.e +"\n");
+        res.append(generateDepthString(depth)).append(node.e).append("\n");
         generateBSTString(node.left, depth + 1, res);
         generateBSTString(node.right, depth + 1, res);
     }
