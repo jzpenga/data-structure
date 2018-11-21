@@ -7,7 +7,7 @@ import java.util.LinkedList;
  */
 public class BST<E extends Comparable<E>>{
 
-    private class Node{
+    class Node{
         E e;
         Node left,right;
         Node(E e){
@@ -15,8 +15,8 @@ public class BST<E extends Comparable<E>>{
         }
     }
 
-    private Node root;
-    private int size;
+    public Node root;
+    public int size;
 
     public BST() {
         root = null;

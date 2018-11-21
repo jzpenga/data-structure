@@ -8,10 +8,12 @@ public class Main {
         for (int d: data){
             bst.add(d);
         }
-        System.out.println(bst);
+        //System.out.println(bst);
         bst.remove(48);
 
         System.out.println("----------------------------------------");
-        System.out.println(bst);
+        //System.out.println(bst);
+
+        BTreePrinter.printNode(bst.root);
     }
 }
